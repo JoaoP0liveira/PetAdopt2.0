@@ -38,11 +38,11 @@ class PetCardScreen extends StatelessWidget {
                     : "https://github.com/kawanwagnner/Pet-s_Day/blob/main/assets/img/default_image.png?raw=true",
                 fit: BoxFit.cover,
                 width: double.infinity,
-                height: 125,
+                height: 200,
               ),
             ),
           ),
-          const SizedBox(height: 0.1),
+          const SizedBox(height: 5),
           Text(
             "${dog.name}, ${dog.age} anos", // Exibindo nome e idade
             style: const TextStyle(
@@ -52,7 +52,7 @@ class PetCardScreen extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
+            padding: const EdgeInsets.only(bottom: 1.0),
             child: SizedBox(
               height: 30,
               child: ElevatedButton(
@@ -65,17 +65,16 @@ class PetCardScreen extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  backgroundColor: Colors.blue[700],
+                  padding: const EdgeInsets.symmetric(horizontal: 80),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
                 child: const Text(
                   "Ver",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),

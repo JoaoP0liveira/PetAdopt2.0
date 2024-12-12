@@ -9,23 +9,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blue[50], // Fundo azul claro
+        backgroundColor: Colors.blue[50],
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Spacer(flex: 2),
-
-              // Ícone grande de adoção de pets
               Icon(
-                Icons.pets, // Ícone de pets
+                Icons.pest_control_rodent_rounded,
                 size: 120,
                 color: Colors.blue[700],
               ),
               const SizedBox(height: 20),
-
-              // Título principal com slogan
               const Text(
                 "Vamos Adotar um Pet?",
                 style: TextStyle(
@@ -34,11 +30,8 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.black87,
                 ),
               ),
-
               const SizedBox(height: 10),
-
               const Spacer(),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

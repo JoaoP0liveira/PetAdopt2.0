@@ -34,17 +34,12 @@ class _PetsScreenState extends State<PetsScreen> {
               const SizedBox(height: 20),
 
               // Título com slogan e ícone estilizado
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.pets,
-                    size: 30,
-                    color: Colors.blue[700],
-                  ),
-                  const SizedBox(width: 10),
-                  const Text(
-                    "Encontre seu novo amigo",
+                  SizedBox(width: 10),
+                  Text(
+                    "Bem vindo(a)!",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -53,6 +48,21 @@ class _PetsScreenState extends State<PetsScreen> {
                   ),
                 ],
               ),
+              const SizedBox(height: 20),
+
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  filled: true,
+                  fillColor: Colors.white, // Fundo branco no campo de texto
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide.none,
+                  ),
+                  prefixIcon: const Icon(Icons.search, color: Colors.black87),
+                ),
+              ),
+
               const SizedBox(height: 20),
 
               // Botões de Ação
@@ -69,7 +79,7 @@ class _PetsScreenState extends State<PetsScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: const Text(
@@ -87,40 +97,26 @@ class _PetsScreenState extends State<PetsScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: const Row(
                       children: [
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
                         Text(
                           "Perfil",
                           style: TextStyle(color: Colors.white),
                         ),
                         SizedBox(width: 5),
-                        Icon(
-                          Icons.person,
-                          color: Colors.white,
-                        )
                       ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
 
-              // Campo de Pesquisa
-              TextField(
-                decoration: InputDecoration(
-                  hintText: "Pesquisar Pet",
-                  filled: true,
-                  fillColor: Colors.white, // Fundo branco no campo de texto
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
-                  ),
-                  prefixIcon: const Icon(Icons.search, color: Colors.black87),
-                ),
-              ),
               const SizedBox(height: 20),
 
               // Lista de Pets
@@ -134,17 +130,14 @@ class _PetsScreenState extends State<PetsScreen> {
                       return Center(child: Text('Erro: ${snapshot.error}'));
                     } else if (snapshot.hasData) {
                       List<PetModel> petList = snapshot.data!;
-                      return GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 0.8,
-                        ),
+                      return ListView.builder(
                         itemCount: petList.length,
                         itemBuilder: (context, index) {
-                          return PetCardScreen(dog: petList[index]);
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: 10.0), // Espaçamento entre os cards
+                            child: PetCardScreen(dog: petList[index]),
+                          );
                         },
                       );
                     } else {

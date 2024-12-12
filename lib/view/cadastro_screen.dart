@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pet_adopt/view/login_screen.dart';
 import '../controller/user_controller.dart';
 import '../model/user_model.dart';
-import 'home_screen.dart'; // Importa a HomeScreen
 
 class CadastroScreen extends StatefulWidget {
   const CadastroScreen({super.key});
@@ -54,45 +53,25 @@ class _CadastroScreenState extends State<CadastroScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "Cadastro",
-            style: TextStyle(color: Colors.white),
-          ),
           backgroundColor: Colors.blue[700],
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
-              );
-            },
-          ),
         ),
         backgroundColor: Colors.blue[50], // Fundo azul claro
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              const Spacer(flex: 2),
+              const Spacer(flex: 1),
               // Header com ícone estilizado
-              Column(
+              const Column(
                 children: [
-                  Icon(
-                    Icons.pets,
-                    size: 80,
-                    color: Colors.blue[700],
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Preencha os dados abaixo para começar 🐾",
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                  SizedBox(height: 10),
+                  Text(
+                    "Cadastro",
+                    style: TextStyle(fontSize: 36, color: Colors.black54),
                   ),
                 ],
               ),
-              const Spacer(flex: 2),
-
-              // Formulário de Cadastro
+              const Spacer(flex: 1),
               Form(
                 key: _formKey,
                 child: Column(

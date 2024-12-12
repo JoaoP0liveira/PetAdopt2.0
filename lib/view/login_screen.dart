@@ -63,11 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
               // Header com ícone ou imagem
               Column(
                 children: [
-                  Icon(
-                    Icons.pets,
-                    size: 80,
-                    color: Colors.blue[700],
-                  ),
                   const SizedBox(height: 10),
                   const Text(
                     "Bem-vindo(a)!",

@@ -4,7 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/pet_model.dart';
 
 class PetController {
-  static const String baseUrl = 'https://pet-adopt-dq32j.ondigitalocean.app/pet';
+  static const String baseUrl =
+      'https://pet-adopt-dq32j.ondigitalocean.app/pet';
 
   Future<String?> _getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -28,10 +29,13 @@ class PetController {
     required int age,
     required double weight,
     required String color,
+    required String story,
     required List<String> images,
   }) async {
     final token = await _getToken();
-    if (token == null) throw Exception('Token não encontrado. Faça login novamente.');
+    if (token == null) {
+      throw Exception('Token não encontrado. Faça login novamente.');
+    }
 
     final response = await http.post(
       Uri.parse('$baseUrl/create'),

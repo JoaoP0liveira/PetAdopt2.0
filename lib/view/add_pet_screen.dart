@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:pet_adopt/controller/pet_controller.dart';
 
@@ -9,6 +11,7 @@ class AddPetScreen extends StatelessWidget {
   final TextEditingController weightController = TextEditingController();
   final TextEditingController colorController = TextEditingController();
   final TextEditingController imageController = TextEditingController();
+  final TextEditingController storyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +38,13 @@ class AddPetScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              const Spacer(flex: 2),
+              const Spacer(flex: 1),
 
               // Ícone e Header
-              Column(
-                children: const [
+              const Column(
+                children: [
                   Icon(
-                    Icons.pets,
+                    Icons.pest_control_rodent_rounded,
                     size: 80,
                     color: Color(0xFF4682B4),
                   ),
@@ -54,13 +57,9 @@ class AddPetScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  Text(
-                    "Preencha as informações abaixo.",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
                 ],
               ),
-              const Spacer(flex: 2),
+              const Spacer(flex: 1),
 
               // Campos de entrada
               _buildTextField(
@@ -90,6 +89,12 @@ class AddPetScreen extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               _buildTextField(
+                storyController,
+                "História do Pet",
+                prefixIcon: Icons.color_lens,
+              ),
+              const SizedBox(height: 15),
+              _buildTextField(
                 imageController,
                 "URL da Imagem do Pet",
                 prefixIcon: Icons.link,
@@ -107,6 +112,7 @@ class AddPetScreen extends StatelessWidget {
                         age: int.parse(ageController.text),
                         weight: double.parse(weightController.text),
                         color: colorController.text,
+                        story: storyController.text,
                         images: [imageController.text],
                       );
                       ScaffoldMessenger.of(context).showSnackBar(
